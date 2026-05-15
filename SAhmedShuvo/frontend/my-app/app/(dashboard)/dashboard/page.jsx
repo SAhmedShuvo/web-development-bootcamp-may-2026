@@ -75,11 +75,14 @@ export default function DashboardPage() {
   useEffect(() => {
     async function fetchData() {
       try {
-        const res = await fetch("http://localhost:5000/api/user/dashboard", {
-          headers: {
-            Authorization: `Bearer ${token}`,
+        const res = await fetch(
+          "https://personal-expense-tracker-r33t.onrender.com/api/user/dashboard",
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
           },
-        });
+        );
         const data = await res.json();
         setSummary({
           balance: data.currentBalance,
@@ -99,11 +102,14 @@ export default function DashboardPage() {
   useEffect(() => {
     async function fetchData() {
       try {
-        const res = await fetch("http://localhost:5000/api/user/chartData", {
-          headers: {
-            Authorization: `Bearer ${token}`,
+        const res = await fetch(
+          "https://personal-expense-tracker-r33t.onrender.com/api/user/chartData",
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
           },
-        });
+        );
         const data = await res.json();
         setChartData(data);
         console.log(data);
@@ -120,7 +126,7 @@ export default function DashboardPage() {
     async function fetchData() {
       try {
         const res = await fetch(
-          "http://localhost:5000/api/user/expenseCategories",
+          "https://personal-expense-tracker-r33t.onrender.com/api/user/expenseCategories",
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -143,11 +149,14 @@ export default function DashboardPage() {
   useEffect(() => {
     async function fetchData() {
       try {
-        const res = await fetch("http://localhost:5000/api/transaction/show", {
-          headers: {
-            Authorization: `Bearer ${token}`,
+        const res = await fetch(
+          "https://personal-expense-tracker-r33t.onrender.com/api/transaction/show",
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
           },
-        });
+        );
         const data = await res.json();
         setTransactions(data);
         console.log(data);

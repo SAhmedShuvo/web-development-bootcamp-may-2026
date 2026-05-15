@@ -91,11 +91,14 @@ export default function AccountPage() {
     try {
       const token = localStorage.getItem("token");
 
-      const res = await fetch("http://localhost:5000/api/account/show", {
-        headers: {
-          Authorization: `Bearer ${token}`,
+      const res = await fetch(
+        "https://personal-expense-tracker-r33t.onrender.com/api/account/show",
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
         },
-      });
+      );
 
       const data = await res.json();
 
@@ -119,7 +122,7 @@ export default function AccountPage() {
       const token = localStorage.getItem("token");
 
       const res = await fetch(
-        `http://localhost:5000/api/account/delete/${id}`,
+        `https://personal-expense-tracker-r33t.onrender.com/api/account/delete/${id}`,
         {
           method: "DELETE",
           headers: {
@@ -177,18 +180,21 @@ export default function AccountPage() {
 
       const token = localStorage.getItem("token");
 
-      const res = await fetch("http://localhost:5000/api/account/transfer", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
+      const res = await fetch(
+        "https://personal-expense-tracker-r33t.onrender.com/api/account/transfer",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify({
+            from: transferData.from,
+            to: transferData.to,
+            amount: Number(transferData.amount),
+          }),
         },
-        body: JSON.stringify({
-          from: transferData.from,
-          to: transferData.to,
-          amount: Number(transferData.amount),
-        }),
-      });
+      );
 
       const data = await res.json();
 
@@ -496,17 +502,20 @@ function AddAccountModal({ onClose, onSuccess }) {
 
       const token = localStorage.getItem("token");
 
-      const res = await fetch("http://localhost:5000/api/account/add", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
+      const res = await fetch(
+        "https://personal-expense-tracker-r33t.onrender.com/api/account/add",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify({
+            name: name.trim(),
+            type,
+          }),
         },
-        body: JSON.stringify({
-          name: name.trim(),
-          type,
-        }),
-      });
+      );
 
       const data = await res.json();
 

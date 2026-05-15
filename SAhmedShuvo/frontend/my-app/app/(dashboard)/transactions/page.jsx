@@ -34,11 +34,14 @@ export default function TransactionsPage() {
 
       const token = localStorage.getItem("token");
 
-      const res = await fetch("http://localhost:5000/api/transaction/show", {
-        headers: {
-          Authorization: `Bearer ${token}`,
+      const res = await fetch(
+        "https://personal-expense-tracker-r33t.onrender.com/api/transaction/show",
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
         },
-      });
+      );
 
       const data = await res.json();
 
@@ -63,7 +66,7 @@ export default function TransactionsPage() {
       const token = localStorage.getItem("token");
 
       const res = await fetch(
-        `http://localhost:5000/api/transaction/delete/${id}`,
+        `https://personal-expense-tracker-r33t.onrender.com/api/transaction/delete/${id}`,
         {
           method: "POST",
           headers: {

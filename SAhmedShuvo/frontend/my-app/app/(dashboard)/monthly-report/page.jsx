@@ -47,7 +47,7 @@ export default function MonthlyReportPage() {
       const token = localStorage.getItem("token");
 
       const res = await fetch(
-        `http://localhost:5000/api/user/report?month=${month}`,
+        `https://personal-expense-tracker-r33t.onrender.com/api/user/report?month=${month}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -79,7 +79,7 @@ export default function MonthlyReportPage() {
       const token = localStorage.getItem("token");
 
       const res = await fetch(
-        `http://localhost:5000/api/user/downloadReport?month=${month}`,
+        `https://personal-expense-tracker-r33t.onrender.com/api/user/downloadReport?month=${month}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,

@@ -62,11 +62,14 @@ export default function AddExpensePage() {
         return;
       }
 
-      const res = await fetch("http://localhost:5000/api/account/show", {
-        headers: {
-          Authorization: `Bearer ${token}`,
+      const res = await fetch(
+        "https://personal-expense-tracker-r33t.onrender.com/api/account/show",
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
         },
-      });
+      );
 
       const data = await res.json();
 
@@ -128,7 +131,7 @@ export default function AddExpensePage() {
       };
 
       const res = await fetch(
-        "http://localhost:5000/api/transaction/addExpense",
+        "https://personal-expense-tracker-r33t.onrender.com/api/transaction/addExpense",
         {
           method: "POST",
           headers: {
