@@ -71,7 +71,10 @@ export default function DashboardPage() {
   }, []);
 
   // ── fetch summary API ──
-  const token = localStorage.getItem("token");
+  const token =
+  typeof window !== "undefined"
+    ? localStorage.getItem("token")
+    : null;
   useEffect(() => {
     async function fetchData() {
       try {
