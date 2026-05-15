@@ -7,8 +7,26 @@ module.exports = (app) => {
   app.use(express.json());
   app.use(morgan("dev"));
   app.use(helmet());
-  app.use(cors({
-    origin: "http://localhost:3000", // Allow requests from your frontend
-    credentials: true,
-  }));
+
+  const allowedOrigins = [
+    "http://localhost:3000",
+    "http://localhost:3001",
+    "https://your-frontend.vercel.app" // 🔴 replace with your real Vercel URL
+  ];
+
+  app.use(
+    cors({
+      origin: function (origin, callback) {
+        // allow tools like Postman or server-to-server requests
+        if (!origin) return callback(null, true);
+
+        if (allowedOrigins.includes(origin)) {
+          return callback(null, true);
+        } else {
+          return callback(new Error("Not allowed by CORS"));
+        }
+      },
+      credentials: true,
+    })
+  );
 };
