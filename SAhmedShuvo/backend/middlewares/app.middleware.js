@@ -11,7 +11,7 @@ module.exports = (app) => {
   const allowedOrigins = [
     "http://localhost:3000",
     "http://localhost:3001",
-    "https://expense-tracker-frontend-ruby-nine.vercel.app/" 
+    "https://expense-tracker-frontend-ruby-nine.vercel.app" 
   ];
 
   app.use(
